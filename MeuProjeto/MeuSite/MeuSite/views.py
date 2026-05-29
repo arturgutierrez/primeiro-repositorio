@@ -6,3 +6,17 @@ def home(request):
     Renders the home.html template.
     '''
     return render(request, 'MeuSite/home.html')
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+# Create your views here.
+
+# Essa função abaixo não está protegida
+def curriculo_spiff(request):
+    return render(request, 'curriculo/curriculo-v1.html')
+
+# A função abaixo está protegida. Veja a anotação @login_required
+@login_required
+def curriculo_spiff_v2(request):
+    return render(request, 'curriculo/curriculo-v2.html')
